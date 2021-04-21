@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>ML API</title>
+  <title>California Love</title>
 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 
@@ -14,7 +14,6 @@
 
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
       aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -23,29 +22,15 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link" href="#">Accueil
             <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-            aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
+          <a class="nav-link" href="#">A Propos</a>
         </li>
       </ul>
     </div>
@@ -94,37 +79,75 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="col-4">
-        <br><br>
-        <h1>
-          <center>Simulation</center>
-        </h1>
-        <br><br>
+      <div class="col-4 card text-white bg-primary">
+        <div class="card-header">
+          <br>
+          <h1>
+            <center>Simulation</center>
+          </h1>
 
+        </div>
 
-        <form action="{{ url_for('predict')}}" method="POST" role="form">
-          <input type="number" class="form-control" step="0.01" name="MedInc" placeholder="MedInc"
-            required="required" /><br>
-          <input type="number" class="form-control" step="1.00" name="HouseAge" placeholder="HouseAge"
-            required="required" /><br>
-          <input type="number" class="form-control" step="0.01" name="AveRooms" placeholder="AveRooms"
-            required="required" /><br>
-          <input type="number" class="form-control" step="0.01" name="AveBedrms" placeholder="AveBedrms"
-            required="required" /><br>
-          <input type="number" class="form-control" step="1.00" name="Population" placeholder="Population"
-            required="required" /><br>
-          <input type="number" class="form-control" step="0.01" name="AveOccup" placeholder="AveOccup"
-            required="required" /><br>
-          <input type="number" class="form-control" step="0.01" name="Latitude" placeholder="Latitude"
-            required="required" /><br>
-          <input type="number" class="form-control" step="0.01" name="Longitude" placeholder="Longitude"
-            required="required" /><br>
-          <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-        </form>
+        <div class="card-body">
+          <form action="{{ url_for('predict')}}" method="POST" role="form">
+            <input type="number" class="form-control" step="0.01" name="MedInc" placeholder="MedInc"
+              required="required" /><br>
+            <input type="number" class="form-control" step="1.00" name="HouseAge" placeholder="HouseAge"
+              required="required" /><br>
+            <input type="number" class="form-control" step="0.01" name="AveRooms" placeholder="AveRooms"
+              required="required" /><br>
+            <input type="number" class="form-control" step="0.01" name="AveBedrms" placeholder="AveBedrms"
+              required="required" /><br>
+            <input type="number" class="form-control" step="1.00" name="Population" placeholder="Population"
+              required="required" /><br>
+            <input type="number" class="form-control" step="0.01" name="AveOccup" placeholder="AveOccup"
+              required="required" /><br>
+            <input type="number" class="form-control" step="0.01" name="Latitude" placeholder="Latitude"
+              required="required" /><br>
+            <input type="number" class="form-control" step="0.01" name="Longitude" placeholder="Longitude"
+              required="required" /><br>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="card text-white bg-primary col-12">
+          <div class="card-header">
+            <br>
+            <h1>
+              <center>Valeurs Saisies</center>
+            </h1>
+          </div>
+          <div class="card-body">
+            <p class="card-text taille_police lead">
+              <b>{{ saisie_text }}</b>
+            </p>
+          </div>
+          <br>
+        </div>
+        <br>
+        <div class="card text-white bg-secondary col-12">
+          <div class="card-header">
+            <br>
+            <h1>
+              <center>Résultat de la simulation</center>
+            </h1>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text taille_police lead">
+              <b>{{ prediction_text }}</b>
+            </p>
+          </div>
+          <br>
+        </div>
+        <br>
       </div>
 
-      {{ value_text }}
-      {{ prediction_text }}
+
+
+
+
 
     </div>
   </div>

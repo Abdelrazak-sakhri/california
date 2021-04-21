@@ -22,7 +22,7 @@ def predict():
 
     output = round(prediction[0], 2)
 
-    return render_template('index.html', value_text='Les valeurs ue vous avez renseignez sont les suivantes {}'.format(int_features), prediction_text='Le bien immobilier est estimé à {}'.format(output))
+    return render_template('index.html', saisie_text='Les valeurs saisies sont les suivantes {}'.format(output), prediction_text='Le bien est estimé à {}'.format(output))
 
 
 @app.route('/predict_api', methods=['POST'])

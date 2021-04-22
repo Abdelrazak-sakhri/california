@@ -7,8 +7,11 @@
   <title>California Love</title>
 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 
 </head>
+
 
 <body>
 
@@ -27,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">A Propos</a>
@@ -40,6 +43,8 @@
   <div class="card bg-dark text-white">
     <img src="https://coverfiles.alphacoders.com/560/56021.jpg" class="card-img" alt="..." />
 
+    
+
   </div>
 
 
@@ -48,7 +53,7 @@
       <div class="col-6">
         <br><br>
         <h1>
-          <center>Information California</center>
+          <center>Information California   {{data}}  </center>
         </h1>
         <br><br>
         <p class="lead"><b>Contexte : </b>Dans le cadre de la formation développeur IA dispensé par Simplon, nous
@@ -63,14 +68,14 @@
         </h1>
         <br><br>
         <ul>
-          <li class="lead"><b>MedInc : </b>median income in block</li>
-          <li class="lead"><b>HouseAge : </b>median house age in block</li>
-          <li class="lead"><b>AveRooms : </b>average number of rooms</li>
-          <li class="lead"><b>AveBedrms : </b>average number of bedrooms</li>
-          <li class="lead"><b>Population : </b>block population</li>
-          <li class="lead"><b>AveOccup : </b>average house occupancy</li>
-          <li class="lead"><b>Latitude : </b>house block latitude</li>
-          <li class="lead"><b>Longitude : </b>house block longitude</li>
+          <li class="lead"><b>MedInc : </b>Revenus moyens des habitants du quatier</li>
+          <li class="lead"><b>HouseAge : </b>Age moyen des maisons dans le quartier</li>
+          <li class="lead"><b>AveRooms : </b>Nombre moyen de pièces</li>
+          <li class="lead"><b>AveBedrms : </b>Nombre moyen de chambres</li>
+          <li class="lead"><b>Population : </b>Population du quartier</li>
+          <li class="lead"><b>AveOccup : </b>Nombre moyen d'occupant</li>
+          <li class="lead"><b>Latitude : </b>Latitude</li>
+          <li class="lead"><b>Longitude : </b>Longitude</li>
         </ul>
       </div>
     </div>
@@ -91,22 +96,59 @@
 
         <div class="card-body">
           <form action="{{ url_for('predict')}}" method="POST" role="form">
-            <input type="number" class="form-control" step="0.01" name="MedInc" placeholder="MedInc"
-              required="required" /><br>
-            <input type="number" class="form-control" step="1.00" name="HouseAge" placeholder="HouseAge"
-              required="required" /><br>
-            <input type="number" class="form-control" step="0.01" name="AveRooms" placeholder="AveRooms"
-              required="required" /><br>
-            <input type="number" class="form-control" step="0.01" name="AveBedrms" placeholder="AveBedrms"
-              required="required" /><br>
-            <input type="number" class="form-control" step="1.00" name="Population" placeholder="Population"
-              required="required" /><br>
-            <input type="number" class="form-control" step="0.01" name="AveOccup" placeholder="AveOccup"
-              required="required" /><br>
-            <input type="number" class="form-control" step="0.01" name="Latitude" placeholder="Latitude"
-              required="required" /><br>
-            <input type="number" class="form-control" step="0.01" name="Longitude" placeholder="Longitude"
-              required="required" /><br>
+
+
+          <div class="slidecontainer">
+          <div><label for="myRange1" class="form-label">Revenus moyens des habitants du quatier</label></div>          
+          <input type="range" min="0.5" max="15" step="0.0001"value="0" class="slider form-range" name="MedInc" id="myRange1">
+          <p>Value: <span id="demo1"></span></p>
+          </div><br>
+
+           
+          <div class="slidecontainer">
+          <div><label for="myRange2" class="form-label">Age moyen des maisons dans le quartier</label></div>     
+          <input type="range" min="1" max="52" step="1" value="0" id="myRange2" class="slider form-range" name="HouseAge" placeholder="HouseAge" required="required" />
+          <p>Value: <span id="demo2"></span></p>
+          </div><br>
+
+
+          <div class="slidecontainer">
+          <div><label for="myRange3" class="form-label">Nombre moyen de pièces</label></div> 
+          <input type="range"  min="0.85" max="141.91" step="0.000001" value="0" id="myRange3" class="slider form-range" name="AveRooms" placeholder="AveRooms" required="required" />
+          <p>Value: <span id="demo3"></span></p>
+         </div><br>
+
+          <div class="slidecontainer">
+          <div><label for="myRange4" class="form-label">Nombre moyen de chambres</label></div>      
+          <input type="range"  min="0.33" max="34.07" step="0.000001" value="0" id="myRange4" class="slider form-range" name="AveBedrms" placeholder="AveBedrms" required="required" />
+          <p>Value: <span id="demo4"></span></p>
+          </div><br>
+
+          <div class="slidecontainer">
+          <div><label for="myRange5" class="form-label">Population du quartier</label></div>      
+          <input type="range"  min="3" max="35682" step="1" value="0" id="myRange5" class="slider form-range" name="Population" placeholder="Population" required="required" />
+          <p>Value: <span id="demo5"></span></p>
+          </div><br>
+
+          <div class="slidecontainer">
+          <div><label for="myRange6" class="form-label">Nombre moyen d'occupant</label></div>      
+          <input type="range"  min="0.69" max="1243.33" step="0.000001" value="0" id="myRange6" class="slider form-range" name="AveOccup" placeholder="AveOccup" required="required" />
+          <p>Value: <span id="demo6"></span></p>
+          </div><br>
+
+          <div class="slidecontainer">
+          <div><label for="myRange7" class="form-label">Latitude</label></div>      
+          <input type="range"  min="32.54" max="41.95" step="0.01" value="0" id="myRange7" class="slider form-range" name="Latitude" placeholder="Latitude" required="required" />
+          <p>Value: <span id="demo7"></span></p>
+          </div><br>
+
+          <div class="slidecontainer">
+          <div><label for="myRange8" class="form-label">Longitude</label></div>      
+          <input type="range"  min="-124.35" max="-114.31" step="0.01" value="-124.35" id="myRange8" class="slider form-range" name="Longitude" placeholder="Longitude" required="required" />
+          <p>Value: <span id="demo8"></span></p>
+          </div><br>
+
+
             <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
           </form>
         </div>
@@ -152,18 +194,26 @@
           <br>
         </div>
         <br>
+        <div class="card text-white bg-secondary col-12">
+          <div class="card-header">
+            <br>
+            <h1>
+              <center>Résultat de la simulation</center>
+            </h1>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text taille_police lead">
+              <b>{{ prediction_text }}</b>
+            </p>
+          </div>
+          <br>
+        </div>
+        <br>
       </div>
-
-
-
-
-
-
     </div>
   </div>
- 
-
-
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
     integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
     crossorigin="anonymous"></script>

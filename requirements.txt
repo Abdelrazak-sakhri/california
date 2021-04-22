@@ -10,6 +10,7 @@ lazy-object-proxy==1.4.3
 lazypredict==0.2.9
 libarchive-c==2.9
 lightgbm==2.3.1
+explainerdashboard==0.3.1
 
 
 
